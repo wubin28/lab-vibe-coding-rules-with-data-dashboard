@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI Performance 数据看板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 10px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .data-info {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .charts-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e8ed;
+        }
+
+        .chart-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .chart-container {
+            height: 250px;
+            position: relative;
+        }
+
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .bar-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .bar-label {
+            width: 120px;
+            font-size: 0.9em;
+            color: #555;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .bar-visual {
+            flex: 1;
+            height: 25px;
+            background: linear-gradient(90deg, #74b9ff, #0984e3);
+            border-radius: 12px;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .bar-value {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #2d3436;
+            min-width: 60px;
+        }
+
+        .summary-section {
+            margin-top: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .summary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .summary-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .summary-label {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Agentic AI Performance 数据看板</h1>
+            <p>Kaggle数据集"Agentic AI Performance Dataset 2025"分析报告</p>
+        </div>
+
+        <div class="data-info">
+            <h3>📊 数据集信息</h3>
+            <p><strong>实际处理记录数：</strong>80条数据</p>
+            <p><strong>分析维度：</strong>智能体类型、模型架构、任务类别的多模态支持和公正性表现</p>
+        </div>
+
+        <div class="charts-grid">
+            <!-- 图表1：智能体类型多模态支持占比 -->
+            <div class="chart-card">
+                <div class="chart-title">问题1：智能体类型多模态支持占比TOP3</div>
+                <div class="chart-container">
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">Research Assistant</div>
+                            <div class="bar-visual" style="width: 60%;"></div>
+                            <div class="bar-value">60.0%</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Document Processor</div>
+                            <div class="bar-visual" style="width: 33.33%;"></div>
+                            <div class="bar-value">33.33%</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Sales Assistant</div>
+                            <div class="bar-visual" style="width: 28.57%;"></div>
+                            <div class="bar-value">28.57%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 图表2：模型架构多模态支持占比 -->
+            <div class="chart-card">
+                <div class="chart-title">问题2：模型架构多模态支持占比TOP3</div>
+                <div class="chart-container">
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">GPT-4o</div>
+                            <div class="bar-visual" style="width: 37.5%;"></div>
+                            <div class="bar-value">37.5%</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">CodeT5+</div>
+                            <div class="bar-visual" style="width: 33.33%;"></div>
+                            <div class="bar-value">33.33%</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Transformer-XL</div>
+                            <div class="bar-visual" style="width: 20%;"></div>
+                            <div class="bar-value">20.0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 图表3：任务类别公正性中位数 -->
+            <div class="chart-card">
+                <div class="chart-title">问题3：任务类别公正性中位数TOP3</div>
+                <div class="chart-container">
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">Communication</div>
+                            <div class="bar-visual" style="width: 82.14%; background: linear-gradient(90deg, #00b894, #00a085);"></div>
+                            <div class="bar-value">0.8214</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Research & Summarization</div>
+                            <div class="bar-visual" style="width: 78.54%; background: linear-gradient(90deg, #00b894, #00a085);"></div>
+                            <div class="bar-value">0.7854</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Decision Making</div>
+                            <div class="bar-visual" style="width: 78.16%; background: linear-gradient(90deg, #00b894, #00a085);"></div>
+                            <div class="bar-value">0.7816</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 数据统计摘要 -->
+        <div class="summary-section">
+            <h3 style="text-align: center; margin-bottom: 20px; color: #2c3e50;">📈 数据统计摘要</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-number">16</div>
+                    <div class="summary-label">智能体类型数量</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-number">10</div>
+                    <div class="summary-label">模型架构数量</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-number">10</div>
+                    <div class="summary-label">任务类别数量</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-number">12</div>
+                    <div class="summary-label">支持多模态的智能体数</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-number">15%</div>
+                    <div class="summary-label">总体多模态支持率</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-number">0.77</div>
+                    <div class="summary-label">平均公正性得分</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; padding: 20px; background: #f1f3f4; border-radius: 8px;">
+            <p style="color: #666; font-size: 0.9em;">
+                📅 数据生成时间: 2025-09-19 |
+                📊 数据来源: Agentic AI Performance Dataset 2025 |
+                🔍 分析工具: Python + HTML可视化
+            </p>
+        </div>
+    </div>
+</body>
+</html>
