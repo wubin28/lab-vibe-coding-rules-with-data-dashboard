@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能体AI性能数据看板 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #495057;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .data-summary {
+            background-color: #e3f2fd;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .dashboard-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .chart-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .chart-card h2 {
+            color: #007bff;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        .chart-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .dashboard-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>智能体AI性能数据看板</h1>
+            <p>Agentic AI Performance Dataset 2025 - 数据分析报告</p>
+            <div class="data-summary">
+                已处理数据记录: <strong>80</strong> 条
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <section class="chart-card">
+                <h2>问题一：智能体类型多模态能力分析</h2>
+                <p>支持多模态处理的智能体类型在该类型中的占比排名前三</p>
+                <div class="chart-container">
+                    <canvas id="chart1"></canvas>
+                </div>
+            </section>
+
+            <section class="chart-card">
+                <h2>问题二：大模型架构多模态能力分析</h2>
+                <p>支持多模态处理的大模型架构在该架构中的占比排名前三</p>
+                <div class="chart-container">
+                    <canvas id="chart2"></canvas>
+                </div>
+            </section>
+
+            <section class="chart-card">
+                <h2>问题三：任务类别公正性表现分析</h2>
+                <p>各种智能体处理任务的公正性（bias detection）中位数排名前三</p>
+                <div class="chart-container">
+                    <canvas id="chart3"></canvas>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>数据来源: Kaggle - Agentic AI Performance Dataset 2025 | 分析时间: 2025-09-20</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // 数据
+        const analysisData = {
+            "metadata": {
+                "total_records": 80,
+                "dataset_name": "Agentic AI Performance Dataset 2025",
+                "analysis_date": "2025-09-20 14:09:56"
+            },
+            "question1_agent_type_multimodal": [
+                {
+                    "agent_type": "Research Assistant",
+                    "multimodal_percentage": 60.0,
+                    "multimodal_count": 3,
+                    "total_count": 5
+                },
+                {
+                    "agent_type": "Document Processor",
+                    "multimodal_percentage": 33.33,
+                    "multimodal_count": 2,
+                    "total_count": 6
+                },
+                {
+                    "agent_type": "Sales Assistant",
+                    "multimodal_percentage": 28.57,
+                    "multimodal_count": 2,
+                    "total_count": 7
+                }
+            ],
+            "question2_model_architecture_multimodal": [
+                {
+                    "model_architecture": "GPT-4o",
+                    "multimodal_percentage": 37.5,
+                    "multimodal_count": 3,
+                    "total_count": 8
+                },
+                {
+                    "model_architecture": "CodeT5+",
+                    "multimodal_percentage": 33.33,
+                    "multimodal_count": 3,
+                    "total_count": 9
+                },
+                {
+                    "model_architecture": "Transformer-XL",
+                    "multimodal_percentage": 20.0,
+                    "multimodal_count": 2,
+                    "total_count": 10
+                }
+            ],
+            "question3_task_category_bias_detection": [
+                {
+                    "task_category": "Communication",
+                    "bias_detection_median": 0.8214,
+                    "count": 5
+                },
+                {
+                    "task_category": "Research & Summarization",
+                    "bias_detection_median": 0.7854,
+                    "count": 4
+                },
+                {
+                    "task_category": "Decision Making",
+                    "bias_detection_median": 0.7816,
+                    "count": 5
+                }
+            ]
+        };
+
+        // Chart.js configuration
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    grid: {
+                        color: '#e9ecef'
+                    }
+                },
+                y: {
+                    grid: {
+                        color: '#e9ecef'
+                    }
+                }
+            }
+        };
+
+        // 问题一图表
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: analysisData.question1_agent_type_multimodal.map(item => item.agent_type),
+                datasets: [{
+                    label: '多模态支持占比 (%)',
+                    data: analysisData.question1_agent_type_multimodal.map(item => item.multimodal_percentage),
+                    backgroundColor: ['#007bff', '#28a745', '#ffc107'],
+                    borderColor: ['#0056b3', '#1e7e34', '#e0a800'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    ...chartOptions.scales,
+                    x: {
+                        ...chartOptions.scales.x,
+                        title: {
+                            display: true,
+                            text: '多模态支持占比 (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // 问题二图表
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: analysisData.question2_model_architecture_multimodal.map(item => item.model_architecture),
+                datasets: [{
+                    label: '多模态支持占比 (%)',
+                    data: analysisData.question2_model_architecture_multimodal.map(item => item.multimodal_percentage),
+                    backgroundColor: ['#007bff', '#28a745', '#ffc107'],
+                    borderColor: ['#0056b3', '#1e7e34', '#e0a800'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    ...chartOptions.scales,
+                    x: {
+                        ...chartOptions.scales.x,
+                        title: {
+                            display: true,
+                            text: '多模态支持占比 (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // 问题三图表
+        const ctx3 = document.getElementById('chart3').getContext('2d');
+        new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: analysisData.question3_task_category_bias_detection.map(item => item.task_category),
+                datasets: [{
+                    label: '公正性检测中位数',
+                    data: analysisData.question3_task_category_bias_detection.map(item => item.bias_detection_median),
+                    backgroundColor: ['#007bff', '#28a745', '#ffc107'],
+                    borderColor: ['#0056b3', '#1e7e34', '#e0a800'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    ...chartOptions.scales,
+                    x: {
+                        ...chartOptions.scales.x,
+                        title: {
+                            display: true,
+                            text: '公正性检测中位数'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

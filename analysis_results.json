@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "total_records": 80,
+    "dataset_name": "Agentic AI Performance Dataset 2025",
+    "analysis_date": "2025-09-20 14:09:56"
+  },
+  "question1_agent_type_multimodal": [
+    {
+      "agent_type": "Research Assistant",
+      "multimodal_percentage": 60.0,
+      "multimodal_count": 3,
+      "total_count": 5
+    },
+    {
+      "agent_type": "Document Processor",
+      "multimodal_percentage": 33.33,
+      "multimodal_count": 2,
+      "total_count": 6
+    },
+    {
+      "agent_type": "Sales Assistant",
+      "multimodal_percentage": 28.57,
+      "multimodal_count": 2,
+      "total_count": 7
+    }
+  ],
+  "question2_model_architecture_multimodal": [
+    {
+      "model_architecture": "GPT-4o",
+      "multimodal_percentage": 37.5,
+      "multimodal_count": 3,
+      "total_count": 8
+    },
+    {
+      "model_architecture": "CodeT5+",
+      "multimodal_percentage": 33.33,
+      "multimodal_count": 3,
+      "total_count": 9
+    },
+    {
+      "model_architecture": "Transformer-XL",
+      "multimodal_percentage": 20.0,
+      "multimodal_count": 2,
+      "total_count": 10
+    }
+  ],
+  "question3_task_category_bias_detection": [
+    {
+      "task_category": "Communication",
+      "bias_detection_median": 0.8214,
+      "count": 5
+    },
+    {
+      "task_category": "Research & Summarization",
+      "bias_detection_median": 0.7854,
+      "count": 4
+    },
+    {
+      "task_category": "Decision Making",
+      "bias_detection_median": 0.7816,
+      "count": 5
+    }
+  ]
+}
